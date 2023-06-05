@@ -4,14 +4,14 @@
 
 |命令|参数说明|默认值|示例|
 |---|-------|----|-----|
-|`-V`|查看版本号|-|`svgicon -V`|
-|`-i --init [path]`|初始化，path为初始化文件存放目录|./src/icon|`svgicon -i` <br /> `svgicon -i ./src/iconTest`|
-|`-a --add [iconName] [icons...]`|添加指定名称的icon，多个icon请以空格分开；指定 . 则全部添加|-|`svgicon -a .`<br />`svgicon -a ic_files ic_delete`|
-|--set-origin [key=value] [key=value...]|设置或添加icon的资源路径|{"ide": [ide资源地址](https://at.alicdn.com/t/c/font_3325623_wwvul9sxt1.js)}| `svgicon --set-origin test=https://at.alicdn.com/t/test.js`<br /><br />`svgicon --set-origin test1=https://at.alicdn.com/t/test1.js test2=https://at.alicdn.com/t/test2.js`
-|--del-origin [key] [key...]|删除icon资源地址|-|`svgicon --del-origin testOrigin`<br />`svgicon --del-origin testOrigin1 testOrigin2`
-|--show-origin|查看icon资源地址|-|`svgicon --show-origin`
+|`-V`|查看版本号|-|`iconer -V`|
+|`-i --init [path]`|初始化，path为初始化文件存放目录|./src/icon|`iconer -i` <br /> `iconer -i ./src/iconTest`|
+|`-a --add [iconName] [icons...]`|添加指定名称的icon，多个icon请以空格分开；指定 . 则全部添加|-|`iconer -a .`<br />`iconer -a ic_files ic_delete`|
+|--set-origin [key=value] [key=value...]|设置或添加icon的资源路径|{"ide": [ide资源地址](https://at.alicdn.com/t/c/font_3325623_wwvul9sxt1.js)}| `iconer --set-origin test=https://at.alicdn.com/t/test.js`<br /><br />`iconer --set-origin test1=https://at.alicdn.com/t/test1.js test2=https://at.alicdn.com/t/test2.js`
+|--del-origin [key] [key...]|删除icon资源地址|-|`iconer --del-origin testOrigin`<br />`iconer --del-origin testOrigin1 testOrigin2`
+|--show-origin|查看icon资源地址|-|`iconer --show-origin`
 
-<!-- |`-p --resourcePath <path>`|配置资源地址(支持在线链接和本地地址)|-|`svgicon -p https://at.alicdn.com/t/c/font_3325623_wwvul9sxt1.js` <br />`svgicon -p /Users/_self_/iconfont.js`| -->
+<!-- |`-p --resourcePath <path>`|配置资源地址(支持在线链接和本地地址)|-|`iconer -p https://at.alicdn.com/t/c/font_3325623_wwvul9sxt1.js` <br />`iconer -p /Users/_self_/iconfont.js`| -->
 
 #### init
 执行`init`之后，会在指定的目录下创建icon文件夹，包含如下文件：
@@ -66,7 +66,7 @@ resourcePath 为后续添加icon的资源地址，请在`init`之后操作； --
 * 触发add后，会同步更新preview.html文件；
 
 ##### ⚔ 建议 ⚔
-初始化时可以直接执行 `svgicon -i -a [iconName]` 快速初始化、设置资源路径、添加icon；
+初始化时可以直接执行 `iconer -i -a [iconName]` 快速初始化、设置资源路径、添加icon；
 
 #### 使用
 ![path.tsx](https://files.catbox.moe/qo8qnm.png)
