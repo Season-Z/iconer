@@ -1,5 +1,5 @@
 {
-  "name": "iconer",
+  "name": "iconer-provider",
   "version": "1.0.0",
   "description": "iconfont icon引入",
   "main": "./dist/index.umd.cjs",
@@ -13,6 +13,7 @@
   "files": [
     "dist/*"
   ],
+  "author": "zhouxishun",
   "license": "ISC",
   "scripts": {
     "dev": "node --loader ts-node/esm ./src/index.ts",
