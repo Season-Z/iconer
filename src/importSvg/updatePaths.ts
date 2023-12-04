@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import { updatePreview } from "./updatePreview";
 import { getPackageJson, Log, exitFn } from "./utils";
+import path from "path";
 
 interface Props {
   newIconNames?: string[];
@@ -16,8 +17,8 @@ export const updatePaths = ({ newIconNames, newIconsMap }: Props) => {
     const iconsKeysArr = Object.keys(newIconsMap);
 
     if (newIconNames && newIconNames?.length !== iconsKeysArr.length) {
-      const noAddIcons = newIconNames?.filter(it => !iconsKeysArr.includes(it))
-      Log.error(`【${noAddIcons?.join(', ')}】添加失败，请检查！`);
+      const noAddIcons = newIconNames?.filter((it) => !iconsKeysArr.includes(it));
+      Log.error(`【${noAddIcons?.join(", ")}】添加失败，请检查！`);
     }
 
     if (!iconsKeysArr.length) {
@@ -25,7 +26,7 @@ export const updatePaths = ({ newIconNames, newIconsMap }: Props) => {
       return;
     }
 
-    newContent = oldContent.replace("}", "");
+    newContent = "";
     iconsKeysArr.forEach((item) => {
       if (oldKeys?.includes(item)) {
         Log.warn(`【${item}】已经存在`);
@@ -33,9 +34,10 @@ export const updatePaths = ({ newIconNames, newIconsMap }: Props) => {
       }
       newContent += `\t"${item}": ${newIconsMap[item]},\n`;
     });
-    newContent = newContent + "}";
+    newContent = `export default {${newContent}}`;
 
-    fs.writeFileSync(`${iconConfigPath}/path.tsx`, newContent);
+    const iconPath = `${path.join(process.cwd(), iconConfigPath)}/path.tsx`;
+    fs.writeFileSync(iconPath, newContent);
 
     // 更新预览文件
     updatePreview();

@@ -34,9 +34,7 @@ export const setOrigin = async (originStringArr: string[]) => {
     if (configPath && content) {
       const origin = content?.origin || {};
       const _content = { ...content, origin: { ...origin, ...originMap } };
-      const coincide = Object.keys(origin).filter((it: string) =>
-        Object.keys(originMap).includes(it)
-      );
+      const coincide = Object.keys(origin).filter((it: string) => Object.keys(originMap).includes(it));
 
       // 有交集
       if (coincide.length) {

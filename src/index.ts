@@ -10,16 +10,14 @@ program
   .version(`version: ${getPackageJson().version}`, "-V, --version", "版本名称")
   .option("-i, --init [path]", "初始化，path为初始化文件存放目录 (default: './src/icon')")
   .option("-a, --add [iconName] [icons...]", "添加指定名称的icon，多个icon请以空格分开；使用 . 则全部添加")
-  .option("--set-origin [key=value] [key=value...]", "设置icon资源地址")
-  .option("--del-origin [key] [key...]", "删除icon资源地址")
-  .option("--show-origin", "查看icon资源地址")
+  .option("-s, --set-origin [key=value] [key=value...]", "设置icon资源地址")
+  .option("-d,--del-origin [key] [key...]", "删除icon资源地址")
+  .option("-show, --show-origin", "查看icon资源地址")
   // .option("-fp --filePath <path>", "导入的文件地址，处理svg提取（支持在线链接和本地地址）")
   // .option("-p, --resourcePath <path>", "配置资源地址（支持在线链接和本地地址）")
   .parse();
 
 const options = program.opts();
-
-// console.log("options:", options);
 
 if (options) {
   // 初始化
@@ -31,18 +29,18 @@ if (options) {
   // 设置icon资源地址
   if (options.setOrigin) {
     if (Array.isArray(options.setOrigin)) {
-      setOrigin(options.setOrigin)
+      setOrigin(options.setOrigin);
     } else {
-      Log.warn('设置icon源格式 `key=value` 不可为空')
+      Log.warn("设置icon源格式 `key=value` 不可为空");
     }
   }
 
   // 删除icon资源地址
-  if(options.delOrigin) {
+  if (options.delOrigin) {
     if (Array.isArray(options.delOrigin)) {
-      delOrigin(options.delOrigin)
+      delOrigin(options.delOrigin);
     } else {
-      Log.warn('删除icon源格式 `key` 不可为空')
+      Log.warn("删除icon源格式 `key` 不可为空");
     }
   }
 
@@ -52,12 +50,11 @@ if (options) {
   // 添加指定icon
   if (options.add) {
     if (typeof options.add === "boolean") {
-      Log.warn('请指定添加的icon的名称或者使用"."进行全量导入')
-    } else if (Array.isArray(options.add) && options.add.length === 1 && options.add[0] === '.') {
+      Log.warn('请指定添加的icon的名称或者使用"."进行全量导入');
+    } else if (Array.isArray(options.add) && options.add.length === 1 && options.add[0] === ".") {
       addBatchSvg();
     } else {
       addSingleSvg(options.add);
     }
   }
 }
-
