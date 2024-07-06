@@ -1,5 +1,5 @@
 {
-  "name": "iconer-provider",
+  "name": "@cls/iconer",
   "version": "1.0.2",
   "description": "iconfont icon引入",
   "main": "./dist/index.umd.cjs",
