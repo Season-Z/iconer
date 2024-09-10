@@ -1,13 +1,12 @@
 {
-  "name": "@cls/iconer",
-  "version": "1.0.2",
-  "description": "iconfont icon引入",
+  "name": "@cyberutopian/pattern",
+  "version": "1.0.0",
+  "description": "",
   "main": "./dist/index.umd.cjs",
   "bin": {
     "iconer": "./dist/index.js"
   },
   "keywords": [
-    "icon",
     "svg"
   ],
   "files": [
